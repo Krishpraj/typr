@@ -1,0 +1,46 @@
+pub const EASY: &[&str] = &[
+    "the", "be", "to", "of", "and", "a", "in", "that", "have", "it",
+    "for", "not", "on", "with", "he", "as", "you", "do", "at", "this",
+    "but", "his", "by", "from", "they", "we", "say", "her", "she", "or",
+    "an", "will", "my", "one", "all", "up", "if", "so", "go", "me",
+    "no", "him", "how", "get", "has", "out", "may", "who", "did", "can",
+    "new", "now", "old", "see", "way", "day", "had", "two", "boy", "use",
+    "was", "are", "big", "run", "let", "set", "try", "ask", "men", "own",
+    "put", "end", "too", "any", "off", "man", "few", "got", "top", "red",
+    "car", "hot", "eat", "sit", "cut", "dog", "cat", "sun", "cup", "fun",
+    "map", "box", "bed", "hat", "pen", "far", "low", "six", "ran", "age",
+];
+
+pub const MEDIUM: &[&str] = &[
+    "about", "there", "think", "which", "would", "other", "after", "could",
+    "first", "these", "right", "where", "those", "their", "world", "house",
+    "place", "water", "every", "under", "never", "found", "bring", "while",
+    "learn", "might", "again", "start", "point", "story", "along", "still",
+    "being", "often", "earth", "small", "group", "money", "night", "stand",
+    "large", "watch", "later", "above", "order", "power", "music", "class",
+    "early", "young", "paper", "south", "plant", "table", "happy", "maybe",
+    "study", "river", "began", "light", "woman", "shall", "close", "black",
+    "white", "given", "today", "taken", "three", "wrote", "field", "state",
+    "known", "month", "heart", "speak", "among", "child", "front", "voice",
+    "heard", "space", "clear", "level", "since", "human", "cause", "sleep",
+    "break", "dance", "count", "drive", "build", "green", "round", "short",
+];
+
+pub const HARD: &[&str] = &[
+    "through", "between", "another", "because", "thought", "believe",
+    "without", "problem", "nothing", "program", "society", "history",
+    "country", "company", "develop", "perhaps", "brought", "morning",
+    "already", "million", "however", "husband", "special", "picture",
+    "include", "several", "student", "control", "general", "certain",
+    "private", "require", "explain", "quality", "quickly", "machine",
+    "product", "library", "natural", "produce", "popular", "foreign",
+    "perform", "digital", "complex", "pattern", "variety", "prepare",
+    "balance", "attempt", "forward", "strange", "weather", "journey",
+    "imagine", "trouble", "average", "promise", "perfect", "surface",
+    "destroy", "network", "written", "current", "instead", "process",
+    "article", "example", "support", "chapter", "subject", "present",
+    "village", "feature", "project", "protect", "opinion", "whether",
+    "channel", "culture", "passage", "freedom", "publish", "quantum",
+    "rhythm", "symptom", "awkward", "mystery", "archive", "exhaust",
+    "wrangle", "obscure", "cynical", "physics", "duality", "anxiety",
+];
