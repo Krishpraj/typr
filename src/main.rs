@@ -70,14 +70,23 @@ fn run_game(stdout: &mut io::Stdout, mode: Mode, difficulty: &str) -> io::Result
         }
 
         if game.is_done() {
+            // freeze elapsed time for words mode (timed mode freezes in check_time_expired)
+            if game.finish_time.is_none() {
+                let elapsed = game.start_time.map(|t| t.elapsed().as_secs_f64()).unwrap_or(0.0);
+                game.finish(elapsed);
+            }
             results::save_result(&game);
             render::render_results(stdout, &game)?;
             loop {
-                if let Event::Key(KeyEvent { code, .. }) = event::read()? {
-                    return Ok(match code {
-                        KeyCode::Tab => Action::Restart,
-                        _ => Action::Quit,
-                    });
+                if let Event::Key(KeyEvent { code, modifiers, .. }) = event::read()? {
+                    match code {
+                        KeyCode::Tab => return Ok(Action::Restart),
+                        KeyCode::Esc => return Ok(Action::Quit),
+                        KeyCode::Char('c') if modifiers.contains(KeyModifiers::CONTROL) => {
+                            return Ok(Action::Quit)
+                        }
+                        _ => {} // ignore other keys
+                    }
                 }
             }
         }

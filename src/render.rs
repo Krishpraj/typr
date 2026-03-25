@@ -302,8 +302,17 @@ pub fn render_results(stdout: &mut io::Stdout, game: &Game) -> io::Result<()> {
 
     put(stdout, cx(div.len(), tw), y0 + 13, div, Color::DarkGrey)?;
 
-    let hint = "tab restart · esc quit";
-    put(stdout, cx(hint.len(), tw), y0 + 15, hint, Color::DarkGrey)?;
+    let hint_tab = "tab";
+    let hint_mid = " new test  ";
+    let hint_esc = "esc";
+    let hint_end = " quit";
+    let hint_len = hint_tab.len() + hint_mid.len() + hint_esc.len() + hint_end.len();
+    let hx = cx(hint_len, tw);
+    put(stdout, hx, y0 + 15, hint_tab, Color::DarkYellow)?;
+    put(stdout, hx + hint_tab.len() as u16, y0 + 15, hint_mid, Color::DarkGrey)?;
+    let esc_x = hx + (hint_tab.len() + hint_mid.len()) as u16;
+    put(stdout, esc_x, y0 + 15, hint_esc, Color::DarkYellow)?;
+    put(stdout, esc_x + hint_esc.len() as u16, y0 + 15, hint_end, Color::DarkGrey)?;
 
     queue!(stdout, ResetColor)?;
     stdout.flush()

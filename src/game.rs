@@ -24,6 +24,7 @@ pub struct Game {
     pub mode: Mode,
     pub difficulty: String,
     pub finished: bool,
+    pub finish_time: Option<f64>,
 }
 
 impl Game {
@@ -43,6 +44,7 @@ impl Game {
             mode,
             difficulty: difficulty.to_string(),
             finished: false,
+            finish_time: None,
         }
     }
 
@@ -87,17 +89,33 @@ impl Game {
         if let Mode::Timed(limit) = self.mode {
             if let Some(start) = self.start_time {
                 if start.elapsed().as_secs() >= limit {
-                    self.finished = true;
+                    self.finish(limit as f64);
                 }
             }
         }
     }
 
+    pub fn finish(&mut self, elapsed: f64) {
+        if !self.finished {
+            self.finished = true;
+            self.finish_time = Some(elapsed);
+        }
+    }
+
     pub fn is_done(&self) -> bool {
-        self.finished || self.cursor >= self.chars.len()
+        if self.finished {
+            return true;
+        }
+        if self.cursor >= self.chars.len() {
+            return true;
+        }
+        false
     }
 
     pub fn elapsed_secs(&self) -> f64 {
+        if let Some(ft) = self.finish_time {
+            return ft;
+        }
         self.start_time
             .map(|t| t.elapsed().as_secs_f64())
             .unwrap_or(0.0)
